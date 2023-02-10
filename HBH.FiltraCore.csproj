@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Title>HBH.FiltraCore</Title>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Company>Haitham Basim</Company>
+		<Version>1.0.0</Version>
+		<RootNamespace>HBH.FiltraCore</RootNamespace>
+		<AssemblyName>HBH.FiltraCore</AssemblyName>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<Authors>Haitham Basim (@haithambasim)</Authors>
+		<Description>Dynamic request filters</Description>
+		<PackageTags>Ef Core, Filter, Query, Dynamic</PackageTags>
+		<PackageProjectUrl></PackageProjectUrl>
+		<RepositoryUrl></RepositoryUrl>
+		<RepositoryType>Public</RepositoryType>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<Copyright>Copyright (c) 2023 Haitham Basim (@haithambasim)</Copyright>
+		<Version>1.0.0</Version>
+		<AssemblyVersion>0.0.0.0</AssemblyVersion>
+		<PackageId>HBH.FiltraCore</PackageId>
+		<Product>HBH.FiltraCore</Product>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="System.Linq" Version="4.3.0" />
+		<PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.25" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="LICENSE.md">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>
