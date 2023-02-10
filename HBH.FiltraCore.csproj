@@ -23,6 +23,7 @@
 		<PackageId>HBH.FiltraCore</PackageId>
 		<Product>HBH.FiltraCore</Product>
 		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -34,6 +35,10 @@
 	<ItemGroup>
 	  <None Update="LICENSE.md">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
