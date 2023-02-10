@@ -13,8 +13,8 @@
 		<Authors>Haitham Basim (@haithambasim)</Authors>
 		<Description>Dynamic request filters</Description>
 		<PackageTags>Ef Core, Filter, Query, Dynamic</PackageTags>
-		<PackageProjectUrl></PackageProjectUrl>
-		<RepositoryUrl></RepositoryUrl>
+		<PackageProjectUrl>https://github.com/haithambasim/HBH.FiltraCore</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/haithambasim/HBH.FiltraCore</RepositoryUrl>
 		<RepositoryType>Public</RepositoryType>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<Copyright>Copyright (c) 2023 Haitham Basim (@haithambasim)</Copyright>
