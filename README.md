@@ -26,6 +26,7 @@
 * [Built With](#built-with)
 * [Getting Started](#getting-started)
 * [Installation](#installation)
+* [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -62,6 +63,118 @@ PM> Install-Package HBH.FiltraCore
 dotnet add package HBH.FiltraCore
 ```
 
+## Usage
+
+## For example you have Employee entity and you want to create an endpoint with dynamic filters
+
+
+```c#
+namespace Test
+{
+    public class Employee
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Jobtitle { get; set; }
+        public decimal Salary { get; set; }
+    }
+}
+```
+
+## first : You have to create a dto for the filter
+
+```c#
+using HBH.FiltraCore;
+
+namespace Test
+{
+    public class AdvanceFilterRequestDto : IFiltraCoreRequestInput
+    {
+        public string Filters { get; set; }
+        public string Term { get; set; }
+        public string TermBy { get; set; }
+    }
+}
+```
+
+## second : Create a dto for the input
+```c#
+namespace Test
+{
+    public class EmployeeFilterRequestDto : AdvanceFilterRequestDto
+    {
+      // add your custom filters here 
+    }
+}
+```
+
+## Third : Create Search endpoint
+
+```c#
+using HBH.FiltraCore;
+
+namespace Test
+{
+    [Authorize]
+    [ApiController]
+    [Route("app/service/[controller]")]
+    public class EmployeeController : ControllerBase
+    {
+        private readonly TestDbContext _testDbContext;
+        
+        public EmployeeController(TestDbContext testDbContext)
+        {
+            _testDbContext = testDbContext;
+        }
+    }
+
+    public async Task<List<Employee>> SearchAsync(EmployeeFilterRequestDto input)
+    {
+        return await _testDbContext.Employees
+                                   // using ApplyAdvanceFilters extension
+                                   .ApplyAdvanceFilters(input)
+                                   .ToListAsync();
+    }
+}
+```
+
+# Request examples
+# using `Term`,`TermBy` filters
+* `Term` is the value that you want to search for
+* `TermBy` is a comma separated string contains the fields that you want the term filter to by applied on
+
+for example if you want to search using `Term` on two fields `Name`, `Jobtitle` the request must be as bellow:
+```Js
+await fetch(`https://localhost:5000/app/service/employee?term=haitham&termBy=name,jobtitle`)
+```
+
+# using `Filters`
+`Filters` is a string contains a 2d array contains all your filters
+
+[
+  ['ColumnName', 'FilterType', 'Value']
+]
+
+### Available filter types
+* Contains: `"$contains"`
+* Not Contains: `"$notContains"`
+* Equal: `"$eq"`
+* Not Equal: `"$ne"`
+* Start With: `"$startsWith"`
+* EndsWith: `"$endsWith"`
+* Less Than: `"$lt"`
+* Less Than Or Equal: `"$lte"`
+* Greater Than: `"$gt"`
+* Greater Than Or Equal: `"$gte"`
+* Is Null: `"$null"`
+* Is Not Null: `"$notNull"`
+
+### Note: `$null` and `$notNull` doesn't require value field
+
+## Example using `filters`
+```Js
+await fetch(`https://localhost:5000/app/service/employee?filters=[["salary","$eq","1000"],["jobtitle","$contains","developer"]]`)
+```
 ## Roadmap
 
 See the [open issues](https://github.com/haithambasim/HBH.FiltraCore/issues) for a list of proposed features (and known issues).
