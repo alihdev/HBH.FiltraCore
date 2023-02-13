@@ -34,15 +34,14 @@
 
 ## About The Project
 
-HBH.FiltraCore is a .NET Core library for filtering collections of data. It provides a flexible and easy-to-use API for filtering data in a variety of ways.
-
+The HBH.FiltraCore library is a .NET extension method library that allows you to apply advanced filters on a LINQ query. The main function in the library is `ApplyAdvanceFilters`, which takes an IQueryable and an input object as input and returns the filtered query. The input object must have properties for Term, TermBy, and Filters. The Term and TermBy fields are used to filter the query based on a search term, and the Filters field is a JSON string that represents a list of filters to be applied on the query. The library supports various types of filters, such as equality, inequality, starts with, ends with, contains, and many others.
 ## Built With
 
 
 
-* [Newtonsoft.Json]()
-* [System.Linq]()
-* [System.Linq.Dynamic.Core]()
+* [Newtonsoft.Json]() for deserializing filters from a string
+* [System.Linq]() for building LINQ expressions
+* [System.Linq.Dynamic.Core]() for dynamically building LINQ expressions
 
 ## Getting Started
 
